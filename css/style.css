@@ -18,11 +18,9 @@ body {
     font-size: 56PX;
     font-weight: 700;
     color: #75B79E;
-    background-color: blue;
 }
 
 .cards {
-    background-color: aliceblue;
     width: 85%;
     margin: 0 auto;
     display: flex;
@@ -38,16 +36,42 @@ body {
     margin-bottom: 34px;
     margin-left: 17px;
     margin-right: 17px;
-    background-color: #a7e9af;
+    
 }
 
-.front {
+.face {
+    width: 100%;
+    height: 100%;
+    background-color: #a7e9af;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    border: 1px solid #99ceab;
+    border-radius: 5px;
+    background-color: #a7e9af;
+    backface-visibility: hidden;
+    transition: all 500ms;
+    transform-style: preserve-3d;
+}
+
+.face img {
     width: 100px;
     height: 100px;
-    position: absolute;
-    top: 24px;
-    left: 10px;
 }
+
+.front-face {
+    transform: rotateY(180deg);
+}
+
+.card:hover .front-face {
+    transform: rotateY(0deg);
+}
+
+.card:hover .back-face {
+    transform: rotateY(-180deg);
+}
+
 
 @media (max-width: 600px) {
     .title {
