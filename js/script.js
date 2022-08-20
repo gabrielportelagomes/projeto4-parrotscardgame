@@ -80,3 +80,20 @@ function flipCard(flippedCard) {
         setTimeout(compareCards, 1000);
     }
 }
+
+function compareCards() {
+    const idCard1 = card1.getAttribute('id');
+    const idCard2 = card2.getAttribute('id');
+
+    if (idCard1 == idCard2) {
+        card1 = '';
+        card2 = '';
+        scoreboard++;
+
+    } else {
+        card1.classList.remove('flip');
+        card2.classList.remove('flip');
+        card1 = '';
+        card2 = '';
+    }
+}
