@@ -64,11 +64,11 @@ body {
     transform: rotateY(180deg);
 }
 
-.card:hover .front-face {
+.flip .front-face {
     transform: rotateY(0deg);
 }
 
-.card:hover .back-face {
+.flip .back-face {
     transform: rotateY(-180deg);
 }
 
