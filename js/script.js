@@ -13,6 +13,10 @@ let moves = 0;
 let card1 = '';
 let card2 = '';
 let scoreboard = 0;
+let value;
+let seconds = 0;
+let centiseconds = 0;
+let timer = '';
 
 function numberOfCards() {
     quantity = parseInt(prompt("Com quantas cartas você deseja jogar? \nInsira um número par, de 4 a 14."));
@@ -60,6 +64,7 @@ function indicator() {
 }
 
 function flipCard(flippedCard) {
+    start();
     const selectedCard = document.querySelector('.cards .flip');
     const classe = flippedCard.getAttribute('class');
     if (classe == 'card flip') {
@@ -89,11 +94,39 @@ function compareCards() {
         card1 = '';
         card2 = '';
         scoreboard++;
-
+        if (scoreboard == (quantity / 2)) {
+            clearInterval(value);
+            alert("Você ganhou em " + moves + " jogadas!\nSeu tempo total foi de: " + seconds + " segundos");
+            const jogarNovamente = prompt("Deseja jogar outra partida?\nDigite 'sim' ou 'não'");
+            if (jogarNovamente == "sim") {
+                location.reload();
+            }
+        }
     } else {
         card1.classList.remove('flip');
         card2.classList.remove('flip');
         card1 = '';
         card2 = '';
     }
+}
+
+function start() {
+    timer = document.getElementById('timer');
+    clearInterval(value);
+    value = setInterval(startTime, 10);
+
+}
+
+function startTime() {
+    centiseconds++; 
+    console.log(centiseconds);
+    if(centiseconds == 100) {
+    centiseconds = 0;
+    seconds++;
+    console.log(seconds);
+    if (seconds < 10) {
+    timer.innerHTML = '0' + seconds;
+    } else if (seconds >= 10){
+    timer.innerHTML = seconds;}
+} 
 }
