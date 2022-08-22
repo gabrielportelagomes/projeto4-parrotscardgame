@@ -108,13 +108,13 @@ function compareCards() {
 }
 
 function finalOptions() {
-    const jogarNovamente = prompt("Deseja jogar outra partida?\nDigite 'sim' ou 'não'");
+    const jogarNovamente = prompt("Deseja jogar outra partida?\nDigite 'sim' ou 'não'.");
     if (jogarNovamente == "sim") {
         location.reload();
     } else if (jogarNovamente == "não") {
         alert("Obrigado por jogar!\nCaso tenha mudado de ideia, recarregue a página.")
     } else {
-        alert("Por farvo, digite 'sim' ou 'não'");
+        alert("Por farvo, digite 'sim' ou 'não'.");
         finalOptions();
     }
 }
@@ -123,16 +123,13 @@ function start() {
     timer = document.getElementById('timer');
     clearInterval(value);
     value = setInterval(startTime, 10);
-
 }
 
 function startTime() {
     centiseconds++;
-    console.log(centiseconds);
     if (centiseconds == 100) {
         centiseconds = 0;
         seconds++;
-        console.log(seconds);
         if (seconds < 10) {
             timer.innerHTML = '0' + seconds;
         } else if (seconds >= 10) {
