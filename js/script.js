@@ -28,7 +28,7 @@ function numberOfCards() {
     }
 }
 
-numberOfCards();
+setTimeout(numberOfCards, 500);
 
 function dealTheCards() {
     const card = document.querySelector('ul');
@@ -96,17 +96,26 @@ function compareCards() {
         scoreboard++;
         if (scoreboard == (quantity / 2)) {
             clearInterval(value);
-            alert("Você ganhou em " + moves + " jogadas!\nSeu tempo total foi de: " + seconds + " segundos");
-            const jogarNovamente = prompt("Deseja jogar outra partida?\nDigite 'sim' ou 'não'");
-            if (jogarNovamente == "sim") {
-                location.reload();
-            }
+            alert("Você ganhou em " + moves + " jogadas!\nSeu tempo total foi de: " + seconds + " segundos.");
+            finalOptions();
         }
     } else {
         card1.classList.remove('flip');
         card2.classList.remove('flip');
         card1 = '';
         card2 = '';
+    }
+}
+
+function finalOptions() {
+    const jogarNovamente = prompt("Deseja jogar outra partida?\nDigite 'sim' ou 'não'");
+    if (jogarNovamente == "sim") {
+        location.reload();
+    } else if (jogarNovamente == "não") {
+        alert("Obrigado por jogar!\nCaso tenha mudado de ideia, recarregue a página.")
+    } else {
+        alert("Por farvo, digite 'sim' ou 'não'");
+        finalOptions();
     }
 }
 
@@ -118,15 +127,16 @@ function start() {
 }
 
 function startTime() {
-    centiseconds++; 
+    centiseconds++;
     console.log(centiseconds);
-    if(centiseconds == 100) {
-    centiseconds = 0;
-    seconds++;
-    console.log(seconds);
-    if (seconds < 10) {
-    timer.innerHTML = '0' + seconds;
-    } else if (seconds >= 10){
-    timer.innerHTML = seconds;}
-} 
+    if (centiseconds == 100) {
+        centiseconds = 0;
+        seconds++;
+        console.log(seconds);
+        if (seconds < 10) {
+            timer.innerHTML = '0' + seconds;
+        } else if (seconds >= 10) {
+            timer.innerHTML = seconds;
+        }
+    }
 }
